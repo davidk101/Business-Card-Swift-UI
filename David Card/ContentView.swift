@@ -4,18 +4,17 @@
 //
 //  Created by David Kumar 
 //  Copyright © 2020 David Kumar. All rights reserved.
-//
-
 import SwiftUI
 
 struct ContentView: View {
     var body: some View {
+        
+        // overlapping child views
         ZStack{
             Color(red: 0.0, green: 0.72, blue: 0.58).edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
             
+            // ordering child views in a vertical line
             VStack {
-                
-                // image name from assets folder
                 Image("developer").resizable().aspectRatio(contentMode: .fit).frame(width: 300.0, height: 300.0)
                 
                 Text("David Kumar").font(.custom("", size: 50)).bold().foregroundColor(.white).padding(.bottom)
@@ -24,15 +23,14 @@ struct ContentView: View {
                     .font(.title)
                     .fontWeight(.semibold)
                     .foregroundColor(Color.white)
+                
+                // separating vertical content within stack view
                 Divider()
-                // no width inputed by default covers the width of screen
-                ContactBar(sf_symbol: "phone.fill", text: "+1 (281) 203-4128")
+                ContactBar(sf_symbol: "phone.fill", text: "+1 (101) 001-1101")
                 
                 ContactBar(sf_symbol: "envelope.fill", text: "david.dn.kumar@gmail.com")
                 
             }
-            
-            
         }
     }
 }
@@ -43,6 +41,7 @@ struct ContentView_Previews: PreviewProvider {
     }
 }
 
+// customizing information bars
 struct ContactBar: View {
     
     let sf_symbol: String
@@ -53,7 +52,6 @@ struct ContactBar: View {
             .overlay(HStack {
                 
                 Image(systemName: sf_symbol).foregroundColor(.orange)
-                
                 Text(text)
             }).padding(.all)
     }
